@@ -1,20 +1,28 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.text.DecimalFormat;
+
 public class Classe {
     private Aluno[] alunos;
     private double mediaClasse = 0;
 
 
-    public Classe( Aluno[] alunos){
+    public Classe(Aluno[] alunos) {
         this.alunos = alunos;
     }
 
-    public void  calculaMediaClasse () {
-        double sum  = 0.0;
+    public double calculaMediaClasse() {
+        double sum = 0.0;
 
-        for (Aluno aluno : alunos){
-            sum += aluno.calculaMedia();
+        for (Aluno aluno : alunos) {
+            sum += aluno.calculaMediaAluno();
         }
+        mediaClasse = sum / alunos.length;
+        return mediaClasse;
+    }
 
-        System.out.println("Media da Classe: "+ (sum / alunos.length));
+    public static void arredondaMediaClasse(double valor) {
+        System.out.println("Média da classe: " + new DecimalFormat("#,##0.00").format(valor));
     }
 
     public void relatorio() {
@@ -22,12 +30,14 @@ public class Classe {
         System.out.println("\n-------------Relatorio da turma-------------");
         if (alunos != null && alunos.length != 0) {
             for (Aluno aluno : alunos) {
-                System.out.println("Nome: " + aluno.getNome() +
-                        ",\t nota 1: " + aluno.getNotaIndex(0) + ",\t nota 2: " + aluno.getNotaIndex(1) +
-                        ",\t nota 3: " + aluno.getNotaIndex(2) + ",\t nota 4: " + aluno.getNotaIndex(3) +
-                        ",\t total: " + aluno.somaNotas() + ",\t média: " + aluno.calculaMedia() +
-                        ",\t resutado final: " + aluno.imprimeResultado());
+                System.out.print("Nome: " + aluno.getNome() + "\n" +
+                        "\t nota 1: " + aluno.getNota1() + "\t nota 2: " + aluno.getNota2() +
+                        "\t nota 3: " + aluno.getNota3() + "\t nota 4: " + aluno.getNota4() +
+                        ",\t total: " + aluno.somaNotas()+",\t");
+                Aluno.arredondaMediaAluno(aluno.calculaMediaAluno());
+            System.out.println("\t\tresutado final: " + aluno.imprimeResultado()+"\n");
             }
+            arredondaMediaClasse(calculaMediaClasse());
             return;
         }
         System.out.println("Nenhum aluno matriculado.");
@@ -41,5 +51,8 @@ public class Classe {
         this.alunos = alunos;
     }
 
+    public double getMediaClasse() {
+        return mediaClasse;
+    }
 }
 

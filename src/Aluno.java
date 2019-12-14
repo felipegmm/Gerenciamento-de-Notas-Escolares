@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Aluno {
     public String nome;
     private String matricula;
@@ -17,7 +19,8 @@ public class Aluno {
     }
 
     public double getNotaIndex(int index) {
-        if (index > 3) return -1.0;
+        if (index > 3)
+            return -1.0;
 
         return notas[index];
     }
@@ -50,13 +53,17 @@ public class Aluno {
         return total;
     }
 
-    public double calculaMedia() {
+    public double calculaMediaAluno() {
         media = somaNotas() / 10;
         return media;
     }
 
+    public static void arredondaMediaAluno(double valor) {
+        System.out.print("Média: " + new DecimalFormat("#,##0.00").format(valor));
+    }
+
     public String imprimeResultado() {
-        if (Math.ceil(calculaMedia()) >= 5) {
+        if (Math.ceil(calculaMediaAluno()) >= 5) {
             return "Aprovado(a)";
         }
         return "Reprovado(a)";
@@ -70,8 +77,8 @@ public class Aluno {
         System.out.printf("%nNota da prova 2 = %.2f", calculaNotaProvaII());
         System.out.printf("%nNota da prova 3 = %.2f", calculaNotaProvaIII());
         System.out.printf("%nNota da prova 4 = %.2f", calculaNotaProvaIV());
-        System.out.printf("%nNotas somadas = %.2f", somaNotas());
-        System.out.printf("%nMédia %.2f", calculaMedia());                      // resolver esse pepino;
+        System.out.printf("%nNotas somadas = %.2f%n", somaNotas());
+        arredondaMediaAluno(calculaMediaAluno());  // resolver esse pepino;
         System.out.printf("%nResultado final: %s", imprimeResultado());
         System.out.println("\n---------------------------------" + "\n");
     }
@@ -99,14 +106,6 @@ public class Aluno {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    public double[] getNotas() {
-        return notas;
-    }
-
-    public void setNotas(double[] notas) {
-        this.notas = notas;
     }
 
     public double getMedia() {
