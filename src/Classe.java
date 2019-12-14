@@ -1,7 +1,4 @@
-package PIMIV_II;
-
 public class Classe {
-
     private Aluno[] alunos;
     private double mediaClasse = 0;
 
@@ -45,3 +42,4 @@ public class Classe {
     }
 
 }
+

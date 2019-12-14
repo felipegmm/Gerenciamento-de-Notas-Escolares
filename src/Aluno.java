@@ -1,5 +1,3 @@
-package PIMIV_II;
-
 public class Aluno {
     public String nome;
     private String matricula;
@@ -46,8 +44,8 @@ public class Aluno {
 
     public double somaNotas() {
         total = 0;
-        for (int i = 0; i<4; i++) {
-            total = total + (notas[i] * (i+1) );
+        for (int i = 0; i < 4; i++) {
+            total = total + (notas[i] * (i + 1));
         }
         return total;
     }
@@ -139,3 +137,5 @@ public class Aluno {
         this.total = total;
     }
 }
+
+

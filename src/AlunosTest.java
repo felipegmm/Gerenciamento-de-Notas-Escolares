@@ -1,5 +1,3 @@
-package PIMIV_II;
-
 public class AlunosTest {
     public static void main(String[] args) {
         Aluno aluno1 = new Aluno("Joãozinho", "12.187-9", new double[]{2.00, 2.50, 3.65, 8.00});
@@ -18,3 +16,4 @@ public class AlunosTest {
 
     }
 }
+
